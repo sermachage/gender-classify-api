@@ -1,0 +1,16 @@
+Request arrives 
+  └─ Is "name" param present and a single value?
+        NO (missing/empty) → 400
+        NO (multiple values) → 422
+        YES → continue
+  └─ Call Genderize API with timeout
+        FAIL (network/timeout) → 502
+        SUCCESS → continue
+  └─ Is gender null OR count == 0?
+        YES → 422 + special message
+        NO → continue
+  └─ Build response:
+        sample_size = count
+        is_confident = probability >= 0.7 && sample_size >= 100
+        processed_at = time.Now().UTC().Format(time.RFC3339)
+  └─ Return 200 + success body
