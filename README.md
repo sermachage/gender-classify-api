@@ -129,3 +129,5 @@ curl "http://localhost:8080/api/classify?name=anna&name=elsa"
 
 - CORS is currently open (`Access-Control-Allow-Origin: *`).
 - Upstream response decoding expects JSON from Genderize.
+
+#end
